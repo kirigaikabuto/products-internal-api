@@ -22,7 +22,6 @@ var srvCfg = amqp.ServerConfig{
 }
 
 func main(){
-	fmt.Println("Start")
 
 	sess := amqp.NewSession(cfg)
 
@@ -56,8 +55,10 @@ func main(){
     srv.Endpoint("products_lib.create", productsAmqpEndpoints.CreateProductAMQPEndpoint())
 	srv.Endpoint("products_lib.list", productsAmqpEndpoints.ListProductsAMQPEndpoint())
 	srv.Endpoint("products_lib.delete", productsAmqpEndpoints.DeleteProductAMQPEndpoint())
+	fmt.Println("Start server")
 	if err := srv.Start(); err != nil {
 		fmt.Println(err)
 		return
 	}
+
 }
